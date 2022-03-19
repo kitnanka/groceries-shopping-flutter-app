@@ -18,74 +18,77 @@ class CartPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment(0, response.setHeight(0.4)),
-      //This the Preview Section of the Cart
-      child: Transform(
-        transform:
-            Matrix4.translationValues(0, transformAnimationValue * 30, 0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(bottom: response.setHeight(10)),
-              child: Opacity(
-                opacity: animationValue,
-                child: Text(
-                  "Cart  ",
-                  style: TextStyle(
-                    fontSize: response.setFontSize(28),
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                height: response.setHeight(50),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: cartProductsProvider.length,
-                  itemBuilder: (context, index) {
-                    return Opacity(
-                      opacity: animationValue,
-                      child: Transform(
-                        transform: Matrix4.translationValues(
-                            0,
-                            -transformAnimationValue *
-                                (index <= 2 ? index : 2) *
-                                30,
-                            0),
-                        child: CartPreviewCard(
-                          cartProductsProvider: cartProductsProvider,
-                          index: index,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-            Transform.scale(
-              scale: animationValue,
-              child: Padding(
-                padding: EdgeInsets.all(5),
-                child: CircleAvatar(
-                  backgroundColor: AppTheme.mainOrangeColor,
-                  radius: response.setHeight(20),
+    return Padding(
+      padding: const EdgeInsets.only(top: 50),
+      child: Align(
+        alignment: Alignment(0, response.setHeight(0.9)),
+        //This the Preview Section of the Cart
+        child: Transform(
+          transform:
+              Matrix4.translationValues(0, transformAnimationValue * 30, 0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(bottom: response.setHeight(12)),
+                child: Opacity(
+                  opacity: animationValue,
                   child: Text(
-                    cartProductsProvider.length.toString(),
+                    "Cart  ",
                     style: TextStyle(
-                      fontSize: response.setFontSize(16),
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
+                      fontSize: response.setFontSize(28),
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
               ),
-            )
-          ],
+              Expanded(
+                child: Container(
+                  height: response.setHeight(50),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: cartProductsProvider.length,
+                    itemBuilder: (context, index) {
+                      return Opacity(
+                        opacity: animationValue,
+                        child: Transform(
+                          transform: Matrix4.translationValues(
+                              0,
+                              -transformAnimationValue *
+                                  (index <= 2 ? index : 2) *
+                                  30,
+                              0),
+                          child: CartPreviewCard(
+                            cartProductsProvider: cartProductsProvider,
+                            index: index,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Transform.scale(
+                scale: animationValue,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: CircleAvatar(
+                    backgroundColor: AppTheme.mainOrangeColor,
+                    radius: response.setHeight(20),
+                    child: Text(
+                      cartProductsProvider.length.toString(),
+                      style: TextStyle(
+                        fontSize: response.setFontSize(16),
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -109,7 +112,7 @@ class CartPreviewCard extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: response.setHeight(3)),
+            padding: EdgeInsets.symmetric(horizontal: response.setHeight(5)),
             child: CircleAvatar(
               backgroundColor: Colors.white,
               radius: response.setWidth(21),

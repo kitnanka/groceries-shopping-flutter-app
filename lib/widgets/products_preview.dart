@@ -63,7 +63,7 @@ class ProductsPreview extends StatelessWidget {
           left: 0,
           width: response.screenWidth,
           child: Container(
-            height: response.setHeight(70),
+            height: response.setHeight(80),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
